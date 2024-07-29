@@ -16,6 +16,7 @@ const Router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
+        index: true,
         path: '/service/friend',
         element: <Friend />,
       },
