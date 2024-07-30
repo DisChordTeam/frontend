@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom';
+import { BiChevronDown } from 'react-icons/bi';
 import Chat from '@/components/chat';
 import * as St from './server.module.ts';
 
@@ -17,13 +19,24 @@ const Server = () => {
       isMine: false,
     },
   ];
+  const param = useParams();
   return (
-    <St.ServerWrap>
-      <St.ServerTop>
-        <p>@일반</p>
-      </St.ServerTop>
-      <Chat data={mock} name="11" />
-    </St.ServerWrap>
+    <>
+      <St.ServerWrap>
+        <St.ServerTop>
+          <button>
+            <p>{param.name}</p>
+            <BiChevronDown />
+          </button>
+        </St.ServerTop>
+      </St.ServerWrap>
+      <St.ChatWrap>
+        <St.ChatTop>
+          <p>@일반</p>
+        </St.ChatTop>
+        <Chat data={mock} name="11" />
+      </St.ChatWrap>
+    </>
   );
 };
 

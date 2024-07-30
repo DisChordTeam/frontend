@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   StAppContainer,
   StWelcomeMsg,
@@ -8,14 +9,19 @@ import {
 import Button from '../../components/atom/Button';
 import Input from '../../components/atom/Input';
 import { StMainContainer } from '../../components/atom/Container';
+import { useInput } from '@/hooks';
 
 const Login = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-
-  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
+  const [email, handelrEmail] = useInput('');
+  const [password, handelrPassword] = useInput('');
+  const navigate = useNavigate();
+  const onSubmitHandler = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      navigate('/service/friend');
+    },
+    [navigate]
+  );
 
   return (
     <StAppContainer>
@@ -31,7 +37,7 @@ const Login = () => {
             label="이메일"
             placeholder="아이디를 입력하세요"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handelrEmail}
           />
           <Input
             id="password"
@@ -39,7 +45,7 @@ const Login = () => {
             label="비밀번호"
             placeholder="비밀번호를 입력하세요"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handelrPassword}
           />
           <Button type="submit">로그인</Button>
         </form>
