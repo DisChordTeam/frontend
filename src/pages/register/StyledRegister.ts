@@ -6,6 +6,7 @@ const StFormContainer = styled.form`
   width: 30%;
   background-color: #444444;
   padding: 20px 40px;
+  
 `;
 
 const StCreateMsg = styled.h2`
