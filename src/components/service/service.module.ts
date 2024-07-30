@@ -12,9 +12,6 @@ export const Find = styled.article`
   display: block;
   border-bottom: 1px solid ${(props) => props.theme.border25};
   padding: 1rem;
-  top: 0;
-  left: 0;
-  position: sticky;
   > button {
     background: ${(props) => props.theme.bgBlack5};
     border-radius: 0.5rem;
